@@ -4,21 +4,30 @@
 
 using namespace std;
 
+// all permutations of a string => swapping + backtracking
+
 void swap(string &s, int i, int j){
-	char temp = s.at(i);
-	s.at(i) = s.at(j);
-	s.at(j) = temp;
+	if(i!=j){
+		char temp = s.at(i);
+		s.at(i) = s.at(j);
+		s.at(j) = temp;
+	}
 }
 
 
+// this is for strings with distinct characters 
+
 void permutationWithBacktracking(int i, string &str, vector<string> &v){
-	if(i == str.length()){
+	if(i == str.length() - 1){  // when i reaches the last character of the string
 		v.push_back(str);
 	}
+
+	// loop is for the branches and the recursion is for the levels 
+	// backtract is for undowing the swapping of the string because in swapping we are modifying the original string
 	for(int j = i; j<str.length(); j++){
 		swap(str, i, j);
 		permutationWithBacktracking(i+1, str, v);
-		swap(str, i, j);
+		swap(str, i, j); // Backtracking => the string goes back to its unswapped state
 	}
 
 }
