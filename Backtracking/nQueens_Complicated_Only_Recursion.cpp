@@ -38,10 +38,18 @@ void print(vector<vector<int>> &arr, int n){
 	cout<<"____________________________________________\n";
 }
 
+int count = 0;
+
+
+/* 
+	Keeping noOfQueenPlaced is important as a parameter in the recursive function 
+	because it will be used in the base case
+*/
 void nQueen(vector<vector<int>> &arr, int n, int row, int col, int noOfQueenPlaced){
 
 	// Base case 1: When the number of queen currently placed (noOfQueenPlaced) is equal to the total no of queens (n)
 	if(noOfQueenPlaced == n){
+		count+=1;
 		// printing the state of the board when all the n queens are placed in the board
 		print(arr, n);
 		return;
@@ -98,4 +106,5 @@ int main(){
 	}
 	print(arr, n);
 	nQueen(arr, n, 0, 0, 0);
+	cout<<count<<endl;
 }
