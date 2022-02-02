@@ -65,7 +65,7 @@ bool nQueen(vector<vector<int>> &board, int n, int row, int noQueenPlaced){
 		}
 		return false; // backtracking when the current queen cannot be placed anywhere in the column for a particular row
 	}
-	return false; // if the solution is entirely not possible
+	return false; // does not matter whether it returns true or false or does not return anything (warning thrown if it does not return anything)
 }
 
 int main(){
